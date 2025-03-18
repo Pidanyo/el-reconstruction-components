@@ -1,0 +1,1 @@
+ElCascaderOnlylastSingle ：只能选中最后一级，且最后一级 不同父亲之间是多选，相同父亲的话只能单选
