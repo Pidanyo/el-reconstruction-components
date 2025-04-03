@@ -8,7 +8,7 @@
         <el-cascader v-model="selectedPaths"  style="width: 100%;" :options="options" ref="cascader" filterable collapse-tags :props="cascaderProps"
             @change="handleChange" popper-class="custom-cascader">
             <template slot-scope="{ node, data }">
-                <span class="node-label" v-if="node.isLeaf">{{ data.label }}</span>
+                <span class="node-label" v-if="node.isLeaf && data.isLastNode">{{ data.label }}</span>
                 <span class="unleaf" v-else>{{ data.label }}</span>
             </template>
         </el-cascader>
@@ -86,7 +86,9 @@ export default {
                 return !this.pathEqual(path, newPaths[0])
             })
 
-            finalPaths.unshift(newPaths[0])
+            if(newPaths[0]){
+                finalPaths.unshift(newPaths[0])
+            }
 
             this.selectedPaths = [...finalPaths]
             // 4. 保存当前状态
